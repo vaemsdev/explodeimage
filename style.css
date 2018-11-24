@@ -1,0 +1,23 @@
+
+canvas{
+    margin: 2px;
+    float: left;
+    display: inline-block;
+    box-shadow: 0 0 6px 2px #00000036;
+}
+
+canvas:hover{
+    margin: 10px;
+    transition: ease .2s;
+}
+
+div{
+    width: 100%;
+     float: left;
+    display: inline-block;
+}
+
+body{
+    margin: 0;
+    text-align: center
+}

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="jquery.min.js" type="text/javascript"></script>
+        <link href="style.css" rel="stylesheet" type="text/css"/>
+    </head>
+    <body>
+        <div class="container">
+            
+        </div>
+    </body>
+    <script>
+
+        var image = new Image();
+        var image_w = 960;
+        var image_h = 540;
+
+        var n = 5;
+        var r = 4;
+        var div;
+        var old = -1;
+        
+        function cropFactor(x, y, i,j) {
+
+            var canvas = document.createElement('canvas');
+            canvas.width = image_w / n;
+            canvas.height = image_w / n;
+
+            var context = canvas.getContext('2d');
+            context.drawImage(image, x, y, canvas.width, canvas.height, 0, 0, canvas.width, canvas.height);
+
+            if (i != old){
+                div = document.createElement('div');
+                old = i;
+            }
+
+            div.appendChild(canvas);
+            
+            if(j%5 == 0)
+                document.querySelector('.container').appendChild(div);
+        }
+
+        image.onload = function () {
+            var w = image_w / n;
+
+            for (var i = 0; i < r; i++)
+                for (var j = 0; j < n; j++)
+                    cropFactor(j * w, i * w, i,j);
+            //console.log(j * w + "," + i * w)
+        }
+
+        image.src = 'image.jpg';
+
+
+    </script>
+</html>
